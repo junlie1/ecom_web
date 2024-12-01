@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'antd';
 import { StarFilled} from '@ant-design/icons';
-import { WrapperStyleTextSell, WrapperPriceText,WrapperDiscountText, StyleNameProduct, WrapperReportText, WrapperCardStyle } from './style';
+import { WrapperStyleTextSell, WrapperPriceText, WrapperDiscountText, StyleNameProduct,  WrapperReportText } from './style';
 import {useNavigate} from 'react-router-dom';
 
 const { Meta } = Card;
@@ -15,12 +15,11 @@ const CardComponent = (props) => {
   }
 
   return (
-    <WrapperCardStyle
+    <Card
     hoverable
     style={{ width: 200 }}
     cover={<img alt="example" src={image} style={{ width: '100%', height: '200px', objectFit: 'cover' }}/>}
-    onClick={() => countInStock !== 1 && handleDetailsProduct(id)}
-    disabled = {countInStock===0}
+    onClick={() => handleDetailsProduct(id)}
   >
     <StyleNameProduct>{name}</StyleNameProduct>
     <WrapperReportText>
@@ -35,7 +34,7 @@ const CardComponent = (props) => {
         {discount || -5} %
       </WrapperDiscountText>
     </WrapperPriceText>
-  </WrapperCardStyle>
+  </Card>
   );
 };
 

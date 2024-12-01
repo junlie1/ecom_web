@@ -80,10 +80,10 @@ const ProfilePage = () => {
         setAvatar(file.preview)
     }
     
-    const handleUpdate =async  () => {
+    const handleUpdate = () => {
         console.log("id truyền vào:", user?.id);
         
-        await  UserService.updateUser(user?.id, { email, name, phone, address, avatar }, user?.access_token);
+        UserService.updateUser(user?.id, { email, name, phone, address, avatar }, user?.access_token);
     }
   return (
     <div style={{width: '1270px', margin: '0 auto'}}>

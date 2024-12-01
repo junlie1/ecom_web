@@ -15,6 +15,7 @@ const SliderComponent = ({ arrImages, style }) => {  // Thêm style vào props
 
   return (
     <div style={style}>  {/* Áp dụng style */}
+    {/* truyền toàn bộ thuộc tính trong settings thành props của Slider */}
       <Slider {...settings}>
         {arrImages.map((image, index) => (
           <Image 
