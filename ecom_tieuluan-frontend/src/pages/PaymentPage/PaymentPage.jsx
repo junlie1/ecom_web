@@ -65,7 +65,7 @@ const OrderPage = () => {
     },
   )
 
-  const { data: dataAdd, isLoading: isLoadingAddOrder, isSuccess, isError } = mutationAddOrder;
+  const {data: dataAdd, isLoading: isLoadingAddOrder, isSuccess, isError } = mutationAddOrder;
 
 
   const handleDeliveryChange = (e) => {
@@ -139,7 +139,7 @@ const OrderPage = () => {
     }
   };
 
-  console.log('orderItemsSelected:', user.name);
+  console.log('orderItemsSelected:', orderItemsSelected);
 
   const handleAddOrder = async () => {
     if (user?.access_token && orderItemsSelected && user?.name && user?.address && user?.phone && user?.city && priceMemo && user?.id) {
@@ -157,7 +157,6 @@ const OrderPage = () => {
             totalPrice: totalPriceMemo,
             user: user?.id
           });
-
           if (res?.data?.url) {
             window.location.href = res.data.url; // Redirect to the payment URL
           } else {
@@ -253,9 +252,6 @@ const OrderPage = () => {
       [e.target.name]: e.target.value
     })
   }
-
-  const [isLoading, setIsLoading] = useState(false);
-
 
   return (
     <div style={{ background: '#f5f5fa', width: '100%', height: '100vh' }}>

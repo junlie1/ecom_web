@@ -22,6 +22,7 @@ import StepComponent from '../../components/Step/StepComponent.js';
 const OrderPage = () => {
 
   const order = useSelector((state) => state.order);
+  
   const user = useSelector((state) => state.user);
   const [form] = Form.useForm();
   const navigate = useNavigate();
@@ -62,6 +63,8 @@ const OrderPage = () => {
     if (listChecked.includes(e.target.value)) {
       const newListChecked = listChecked.filter((item) => item !== e.target.value)
       setListChecked(newListChecked);
+      console.log('newListChecked',newListChecked);
+      
     }
     else {
       setListChecked([...listChecked, e.target.value])
@@ -193,7 +196,7 @@ const OrderPage = () => {
     if (!order?.orderItemsSelected?.length) {
       message.error('Vui lòng chọn sản phẩm!')
     } else {
-      if (!user.phone || !user.address || !user.name || user.city) {
+      if (!user?.phone || !user?.address || !user?.name || user?.city) {
         setIsOpenModalUpdateInfo(true);
       }
     }

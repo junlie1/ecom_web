@@ -10,36 +10,36 @@ const NavbarComponent = () => {
                 return options.map((option) => (
                     <WrapperTextValue key={option}>{option}</WrapperTextValue>
                 ));
-            // case 'checkbox':
-            //     return (
-            //         <Checkbox.Group
-            //             style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '12px' }}
-            //             onChange={onChange}
-            //         >
-            //             {options.map((option) => (
-            //                 <Checkbox style={{ marginLeft: 0 }} value={option.value} key={option.value}>
-            //                     {option.label}
-            //                 </Checkbox>
-            //             ))}
-            //         </Checkbox.Group>
-            //     );
-            // case 'star':
-            //     return (
-            //         <div style={{ marginBottom: '8px' }}>
-            //             <span>Đánh giá:</span>
-            //             {options.map((value) => (
-            //                 <div key={value} style={{ marginTop: '4px' }}>
-            //                     <Rate disabled defaultValue={value} />
-            //                 </div>
-            //             ))}
-            //         </div>
-            //     );
-            // case 'price':
-            //     return options.map((option) => (
-            //         <div key={option} style={{ borderRadius: '10px', backgroundColor: '#ccc' }}>
-            //             {option}
-            //         </div>
-            //     ));
+            case 'checkbox':
+                return (
+                    <Checkbox.Group
+                        style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '12px' }}
+                        onChange={onChange}
+                    >
+                        {options.map((option) => (
+                            <Checkbox style={{ marginLeft: 0 }} value={option.value} key={option.value}>
+                                {option.label}
+                            </Checkbox>
+                        ))}
+                    </Checkbox.Group>
+                );
+            case 'star':
+                return (
+                    <div style={{ marginBottom: '8px' }}>
+                        <span>Đánh giá:</span>
+                        {options.map((value) => (
+                            <div key={value} style={{ marginTop: '4px' }}>
+                                <Rate disabled defaultValue={value} />
+                            </div>
+                        ))}
+                    </div>
+                );
+            case 'price':
+                return options.map((option) => (
+                    <div key={option} style={{ borderRadius: '10px', backgroundColor: '#ccc' }}>
+                        {option}
+                    </div>
+                ));
             default:
                 return null;
         }
@@ -54,12 +54,12 @@ const NavbarComponent = () => {
                     { value: 'b', label: 'B' }
                 ])}
             </WrapperContent>
-            {/* <WrapperContent>
+            <WrapperContent>
                 {renderContent('star', [3, 4, 5])}
             </WrapperContent>
             <WrapperContent>
                 {renderContent('price', ['Dưới 40.000', 'Từ 50.000 đến 150.000', 'Từ 150.000 đến 450.000', 'Trên 500.000'])}
-            </WrapperContent> */}
+            </WrapperContent>
         </div>
     );
 };

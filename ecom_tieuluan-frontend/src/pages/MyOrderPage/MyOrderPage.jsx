@@ -51,7 +51,7 @@ const MyOrderPage = () => {
                         Giá: {item.price.toLocaleString('vi-VN')} VND
                       </p>
                     </div>
-                  </div>
+                    </div>
                 ))}
               </div>
               <div className="order-summary">
@@ -64,7 +64,7 @@ const MyOrderPage = () => {
                 <button className="btn-reorder">Mua lại</button>
               </div>
             </div>
-          </div>
+            </div>
         ))
       ) : (
         <p className="no-orders">Chưa có đơn hàng nào</p>

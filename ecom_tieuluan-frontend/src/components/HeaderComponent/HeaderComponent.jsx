@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Badge, Button, Col, Popover } from 'antd';
+import { Badge, Button, Col, Popover,Input  } from 'antd';
 import { WrapperHeader, WrapperTextHeader, WrapperHeaderAccount, WrapperTextHeaderSmall, WrapperContentPopup } from './style.js';
 import Search from 'antd/lib/transfer/search';
 import * as UserService from '../../service/UserService.js';
@@ -7,7 +7,8 @@ import {useNavigate} from 'react-router-dom';
 import {
     UserOutlined,
     CaretDownOutlined,
-    ShoppingCartOutlined
+    ShoppingCartOutlined,
+    SearchOutlined
 } from '@ant-design/icons';
 import ButtonInputSearch from '../ButtonInputSearch/ButtonInputSearch';
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,6 +20,7 @@ const HeaderComponent = ({isHiddenSearch = false, isHiddenCart = false}) => {
     const dispatch = useDispatch();
     const [userName,setUserName] = useState('');
     const [userAvatar,setUserAvatar] = useState('');
+    const [searchText, setSearchText] = useState(''); // Search
     const user = useSelector((state) => state.user );
     const order = useSelector((state) => state.order)
 
@@ -26,6 +28,11 @@ const HeaderComponent = ({isHiddenSearch = false, isHiddenCart = false}) => {
     const handleNavigateLogin = () => {
         navigate('/sign-in')
     }
+    const handleSearch = () => {
+        if (searchText.trim() !== '') {
+            navigate(`/?search=${encodeURIComponent(searchText.trim())}`); // Điều hướng đến HomePage với từ khóa tìm kiếm
+        }
+    };
 
     // console.log("user", user);
 
@@ -59,15 +66,33 @@ const HeaderComponent = ({isHiddenSearch = false, isHiddenCart = false}) => {
                 <WrapperTextHeader style={{cursor:'pointer'}} onClick={() => navigate('/')}>Nhóm 3</WrapperTextHeader>
             </Col>
             {!isHiddenSearch && (
-                <Col span={13}>
-                <ButtonInputSearch
-                size="large"
-                textButton="Tìm Kiếm"
-                placeholder="input search text" />
-            </Col>
-            )}
-            <Col span={6}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <Col span={13}>
+                        <div style={{ display: 'flex' }}>
+                            <Input
+                                size="large"
+                                placeholder="Nhập từ khóa tìm kiếm..."
+                                value={searchText}
+                                onChange={(e) => setSearchText(e.target.value)}
+                            />
+                            <Button
+                                size="large"
+                                type="primary"
+                                onClick={handleSearch}
+                                icon={<SearchOutlined />}
+                            >
+                                Tìm Kiếm
+                            </Button>
+                        </div>
+                    </Col>
+                )}
+                <Col span={6}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                        }}
+                    >
                     <WrapperHeaderAccount>
 {userAvatar ? (
     <img src={userAvatar} style={{width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover'}}/>

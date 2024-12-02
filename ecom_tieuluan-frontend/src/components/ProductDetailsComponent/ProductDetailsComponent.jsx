@@ -9,6 +9,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { addOrderProduct } from '../../redux/slides/orderSlide';
+import FooterComponent from '../FotterComponent/FooterComponent';
 
 const ProductDetailsComponent = ({idProduct}) => {
   const [numProduct, setNumProduct] = useState(1);
