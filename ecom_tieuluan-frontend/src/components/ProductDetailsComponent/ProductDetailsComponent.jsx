@@ -16,26 +16,19 @@ const ProductDetailsComponent = ({idProduct}) => {
   
   const navigate = useNavigate();
   const location = useLocation();
-
-  // laivung
   const dispact = useDispatch();
   
-  // cập nhật số lượng
     const onChange = (value) => { 
       setNumProduct(Number(value))
     }
-    
     const fetchGetDetailsProduct = async (context) => {
-      // Kiểm tra context.queryKey có giá trị hay không 
-      // truy cập context.queryKey[1]: Chính là ID sản phẩm (idProduct) được truyền vào khi gọi useQuery
       const id = context?.queryKey && context?.queryKey[1];
       if(id) {
         const res = await ProductService.getDetailsProduct(id);
         return res.data;
       }      
     } 
-    const { data: productDetails } = useQuery(['product-details',idProduct], fetchGetDetailsProduct, {enabled: !!idProduct}); // enabled: Điều kiện để query được thực thi
-                                                                                                                              // Đảm bảo rằng React Query chỉ thực thi query khi idProduct tồn tại và hợp lệ
+    const { data: productDetails } = useQuery(['product-details',idProduct], fetchGetDetailsProduct, {enabled: !!idProduct});
     console.log('productDetails',productDetails);
     
 

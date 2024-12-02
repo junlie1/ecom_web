@@ -8,15 +8,14 @@ import AdminProduct from '../../components/AdminProduct/AdminProduct';
 
 const AdminPage = () => {
   const items = [
-    getItem('Người dùng', 'user', <UserOutlined />), // getItem tạo từng mục
+    getItem('Người dùng', 'user', <UserOutlined />),
     getItem('Sản phẩm', 'product', <ProductOutlined />)
   ];
 
-  // Lưu trạng thái của mục được chọn & Hàm dùng để cập nhật trạng thái
   const [keySelected, setKeySelected] = useState('')
 
   const renderPage = (key) => {
-    switch (key) {  
+    switch (key) {
       case 'user':
         return (
           <AdminUser />
@@ -37,7 +36,7 @@ const AdminPage = () => {
   return (
     <>
         <HeaderComponent isHiddenSearch isHiddenCart />
-        <div style={{display: 'flex',}}> {/* flex ~ widget */}
+        <div style={{display: 'flex',}}>
           <Menu
             mode="inline"
             style={{
