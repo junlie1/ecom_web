@@ -12,7 +12,7 @@ import { useQuery } from '@tanstack/react-query';
 import DrawerComponent from '../DrawerComponent/DrawerComponent.jsx';
 import { useSelector } from 'react-redux';
 import ModalComponent from '../ModalComponent/ModelComponent.jsx';
-import { v2 as cloudinary } from 'cloudinary';
+import { v2 as cloudinary } from 'cloudinary-core';
 
 cloudinary.config({
     cloud_name: 'dc8sfvgov',
